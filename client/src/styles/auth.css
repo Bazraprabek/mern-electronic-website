@@ -1,0 +1,39 @@
+.auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f2f5;
+}
+.box{
+    border-radius: 8px;
+    background-color: white;
+    padding: 20px 40px;
+    min-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+form{
+    margin: 30px 0px;
+}
+
+form div{
+    margin: 10px 0px;
+}
+
+form input{
+    width: 100%;
+    padding: 10px;
+}
+
+form button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+  }
+
+.auth a{
+    text-decoration: underline;
+}
