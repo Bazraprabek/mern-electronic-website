@@ -1,0 +1,38 @@
+header {
+  background-color: rgb(244, 238, 231);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ul {
+    display: flex;
+    list-style: none;
+  }
+
+  li {
+    padding: 10px;
+  }
+
+  .login {
+    padding: 10px;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .logout {
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    background-color: brown;
+  }
+
+  a:hover:not(.active, .login, .logout) {
+    color: rgb(123, 102, 102);
+  }
+
+  .active {
+    border-bottom: 2px solid black;
+  }
+}

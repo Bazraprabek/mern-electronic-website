@@ -1,6 +1,7 @@
 const { generateAccessToken } = require("../config/jwt");
-const User = require("../models/User");
+const User = require("../models/User.model");
 const bycrptjs = require("bcryptjs");
+const { sendMail } = require("./mailer");
 
 const userLogin = async (req, res) => {
   try {
@@ -20,7 +21,6 @@ const userLogin = async (req, res) => {
     }
     const accessToken = generateAccessToken(user.username);
     res.send({
-      message: "Login Successful",
       accessToken,
     });
   } catch (err) {
@@ -47,7 +47,9 @@ const userSignup = async (req, res) => {
     }
 
     const user = await User.create({ username, email, password, role: "user" });
+    console.log("User: ", user);
     if (user) {
+      sendMail(user.username, user.email);
       res.send({
         message: "Signup Successful",
       });

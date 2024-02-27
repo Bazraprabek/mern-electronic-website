@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDataContext } from "../../contexts/Data.context";
 import axios from "axios";
+import authService from "../../services/authService";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -18,18 +19,15 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/login", data);
-      console.log(res.status);
-      if (res) {
+      const res = await authService.login(data);
+      if (res.status === 200) {
         setLoading(false);
         navigate("/");
-        setMessage({ type: "success", message: res?.data?.message });
+        setMessage({ type: "success", message: "Welcome to Bazra Shop" });
       }
-      console.log(res);
     } catch (err) {
       setLoading(false);
-      console.log(err.message);
-      setMessage({ type: "error", message: err?.response?.data });
+      setMessage({ type: "error", message: err.message });
     }
   };
 

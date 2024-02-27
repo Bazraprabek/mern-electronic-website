@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useDataContext } from "../../contexts/Data.context";
+import authService from "../../services/authService";
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
@@ -19,15 +20,15 @@ const Signup = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/signup", data);
-      setLoading(false);
-      navigate("/login");
-      setMessage({ type: "success", message: res?.data?.message });
-      console.log(res);
+      const res = await authService.signup(data);
+      if (res.status === 200) {
+        setLoading(false);
+        navigate("/login");
+        setMessage({ type: "success", message: res?.data?.message });
+      }
     } catch (err) {
       setLoading(false);
-      console.log(err.message);
-      setMessage({ type: "error", message: err?.response?.data });
+      setMessage({ type: "error", message: err.message });
     }
   };
 

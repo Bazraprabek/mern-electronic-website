@@ -1,7 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const token = localStorage.getItem("userdata");
+  const navigate = useNavigate();
   const links = [
     {
       name: "Home",
@@ -11,15 +13,12 @@ const Header = () => {
       name: "About",
       path: "/about",
     },
-    {
-      name: "Login",
-      path: "/login",
-    },
-    {
-      name: "Signup",
-      path: "/signup",
-    },
   ];
+
+  const logout = () => {
+    localStorage.removeItem("userdata");
+    navigate("/login");
+  };
 
   return (
     <header>
@@ -35,6 +34,31 @@ const Header = () => {
             </NavLink>
           </li>
         ))}
+        {token ? (
+          <>
+            <li>
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
+            <li>
+              <Link className="logout" onClick={logout}>
+                Logout
+              </Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link className="login" to="/login">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link className="login" to="/signup">
+                Signup
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </header>
   );
