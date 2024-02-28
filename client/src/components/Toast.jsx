@@ -9,7 +9,7 @@ const Toast = ({ message }) => {
           message.type === "success" ? "rgb(197, 197, 10)" : "red",
       }}
     >
-      {message.message}
+      {message.message || "Please Contact"}
     </div>
   ) : null;
 };

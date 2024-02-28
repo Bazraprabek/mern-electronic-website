@@ -22,8 +22,8 @@ const Login = () => {
       const res = await authService.login(data);
       if (res.status === 200) {
         setLoading(false);
-        navigate("/");
         setMessage({ type: "success", message: "Welcome to Bazra Shop" });
+        navigate("/");
       }
     } catch (err) {
       setLoading(false);

@@ -9,12 +9,12 @@ const signup = async (data) => {
   }
 };
 
-const sendMail = async (email) => {
+const fetchUser = async () => {
   try {
-    const response = await axiosInstance.post(`/mail?email=${email}`);
+    const response = await axiosInstance.get("/user");
     return response;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw new Error(error);
   }
 };
 
@@ -29,4 +29,4 @@ const login = async (data) => {
   }
 };
 
-export default { signup, login };
+export default { signup, login, fetchUser };

@@ -60,4 +60,17 @@ const userSignup = async (req, res) => {
   }
 };
 
-module.exports = { userLogin, userSignup };
+const fetchUser = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.user.user }).select([
+      "-password",
+      "-created_at",
+    ]);
+    res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+module.exports = { userLogin, userSignup, fetchUser };

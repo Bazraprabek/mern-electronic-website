@@ -5,13 +5,14 @@ export const DataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
   const [message, setMessage] = useState(null);
+  const [user, setUser] = useState({});
 
   setTimeout(() => {
     setMessage(null);
-  }, 5000);
+  }, 4000);
 
   return (
-    <DataContext.Provider value={{ setMessage }}>
+    <DataContext.Provider value={{ setMessage, user, setUser }}>
       {children}
       <Toast message={message} />
     </DataContext.Provider>

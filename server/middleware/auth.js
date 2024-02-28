@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const verify = (req, res, next) => {
   const token = req.header("Authorization");
 
+  // console.log("Token:", token);
+
   if (!token) {
     return res.status(401).send({ message: "Access token is required" });
   }
