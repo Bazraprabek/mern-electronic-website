@@ -1,0 +1,22 @@
+.card {
+  background-color: wheat;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px rgb(241, 172, 172);
+  width: 12rem;
+  margin: 10px;
+  z-index: 1;
+
+  &:hover {
+    box-shadow: 1px 1px 5px rgb(166, 98, 98);
+  }
+
+  img {
+    width: 12rem;
+    height: 10rem;
+    object-fit: cover;
+  }
+
+  .card_body {
+    padding: 10px;
+  }
+}
