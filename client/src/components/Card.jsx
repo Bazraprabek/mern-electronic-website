@@ -2,14 +2,18 @@ import React from "react";
 import testImage from "../assets/test.jpg";
 import { Link } from "react-router-dom";
 
-const Card = ({ id }) => {
+const Card = ({ _id, product_image, product_name, price }) => {
+  console.log("Product:", product_image);
   return (
     <div className="card">
-      <Link to={"/detail/" + id}>
-        <img src={testImage} alt="test" />
+      <Link to={"/detail/" + _id}>
+        <img
+          src={import.meta.env.VITE_IMG_PATH + "/" + product_image || testImage}
+          alt="test"
+        />
         <div className="card_body">
-          <h3>Title</h3>
-          <p>Sub Title</p>
+          <h3>{product_name}</h3>
+          <p>Rs. {price}</p>
         </div>
       </Link>
     </div>

@@ -1,7 +1,7 @@
 const { generateAccessToken } = require("../config/jwt");
 const User = require("../models/User.model");
 const bycrptjs = require("bcryptjs");
-const { sendMail } = require("./mailer");
+const { sendMail } = require("../config/mailer");
 
 const userLogin = async (req, res) => {
   try {

@@ -4,9 +4,8 @@ const {
   userSignup,
   fetchUser,
 } = require("../controllers/auth.controller");
-const { sendMail } = require("../controllers/mailer");
 const { verify } = require("../middleware/auth");
-const router = express.Router();
+const router = express();
 
 router.post("/login", userLogin);
 router.post("/signup", userSignup);

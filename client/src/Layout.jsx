@@ -16,7 +16,7 @@ const Layout = () => {
         const res = await authService.fetchUser();
         setUser(res.data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         localStorage.removeItem("userdata");
         setMessage({ type: "error", message: "Unauthorized User" });
         navigate("/login");
