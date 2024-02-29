@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { useDataContext } from "../../contexts/Data.context";
 
 const Header = () => {
   const token = localStorage.getItem("userdata");
@@ -9,8 +10,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const [showSuggest, setShowSuggest] = useState(false);
   const navigate = useNavigate();
-
-  const product = ["Iphone", "Jorden", "Samsung"];
+  const { product } = useDataContext();
 
   const logout = () => {
     localStorage.removeItem("userdata");
@@ -46,7 +46,7 @@ const Header = () => {
         <form className="search_box" onSubmit={searchProduct}>
           <input
             type="text"
-            placeholder="Search in Bazra"
+            placeholder="Search Here"
             onChange={(e) => setSearch(e.target.value)}
             onFocus={() => setShowSuggest(true)}
             // onBlur={() => setShowSuggest(false)}
@@ -57,15 +57,23 @@ const Header = () => {
           {showSuggest &&
             (search ? (
               <div className="suggest">
-                {product.map((value, index) => (
-                  <Link
-                    key={index}
-                    to={"/search/" + value}
-                    onClick={() => setShowSuggest(false)}
-                  >
-                    {value}
-                  </Link>
-                ))}
+                {product
+                  .filter((value) =>
+                    value.product_name.toLowerCase().includes(search)
+                  )
+                  .map((value, index) => (
+                    <Link
+                      key={index}
+                      to={"/search/" + value.product_name.toLowerCase()}
+                      onClick={() => setShowSuggest(false)}
+                    >
+                      {value.product_name.toLowerCase()}
+                    </Link>
+                  ))}
+                {product.length > 0 &&
+                  product.filter((value) =>
+                    value.product_name.toLowerCase().includes(search)
+                  ).length === 0 && <p>No product found</p>}
               </div>
             ) : (
               searchHistory && (

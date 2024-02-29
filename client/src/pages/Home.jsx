@@ -23,7 +23,7 @@ const Home = () => {
     <>
       <br />
       {product.map((product) => (
-        <Card key={product.id} {...product} />
+        <Card key={product._id} {...product} />
       ))}
       <br />
     </>

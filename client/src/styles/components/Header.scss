@@ -157,6 +157,7 @@ header {
     }
     .suggest {
       padding: 10px 0px;
+      overflow: hidden;
       position: absolute;
       display: flex;
       flex-direction: column;
@@ -168,7 +169,8 @@ header {
       -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
 
-      a {
+      a,
+      p {
         padding: 8px 20px;
         cursor: default;
       }
@@ -182,10 +184,11 @@ header {
         outline: none;
         color: gray;
         cursor: pointer;
-        padding: 5px;
+        font-weight: bold;
+        padding: 6px;
 
         &:hover {
-          color: #473e3e;
+          color: #7c6969;
         }
       }
     }

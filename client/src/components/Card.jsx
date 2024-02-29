@@ -3,7 +3,6 @@ import testImage from "../assets/test.jpg";
 import { Link } from "react-router-dom";
 
 const Card = ({ _id, product_image, product_name, price }) => {
-  console.log("Product:", product_image);
   return (
     <div className="card">
       <Link to={"/detail/" + _id}>
