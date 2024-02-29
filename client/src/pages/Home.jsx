@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
+import { useDataContext } from "../contexts/Data.context";
 import productService from "../services/productService";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const { product, setProduct } = useDataContext();
+
   useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await productService.fetchProducts();
-        setProducts(res.data);
+        setProduct(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -16,12 +18,14 @@ const Home = () => {
 
     getProducts();
   }, []);
+
   return (
     <>
-      <h1>Home</h1>
-      {products.map((product) => (
+      <br />
+      {product.map((product) => (
         <Card key={product.id} {...product} />
       ))}
+      <br />
     </>
   );
 };
