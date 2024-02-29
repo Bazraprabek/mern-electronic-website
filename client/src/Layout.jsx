@@ -7,7 +7,7 @@ import authService from "./services/authService";
 
 const Layout = () => {
   const navigate = useNavigate();
-  const { setUser } = useDataContext();
+  const { setUser, setMessage } = useDataContext();
   const token = localStorage.getItem("userdata");
 
   useEffect(() => {
@@ -18,6 +18,7 @@ const Layout = () => {
       } catch (err) {
         console.log(err);
         localStorage.removeItem("userdata");
+        setMessage({ type: "error", message: "Unauthorized User" });
         navigate("/login");
       }
     };

@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <h1>Home</h1>
-      <Card />
+      <Card id="21313123" />
     </>
   );
 };

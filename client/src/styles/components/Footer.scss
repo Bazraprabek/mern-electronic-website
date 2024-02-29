@@ -1,0 +1,23 @@
+footer {
+  .foot {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    text-align: start;
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+
+      & > * {
+        margin-bottom: 10px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

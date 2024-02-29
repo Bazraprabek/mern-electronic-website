@@ -7,45 +7,45 @@
   @media screen and (max-width: 500px) {
     background-color: white;
   }
-}
-.box {
-  border-radius: 8px;
-  background-color: white;
-  padding: 40px;
-  min-width: 400px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
-  @media screen and (max-width: 500px) {
-    min-width: auto;
-    width: 100vw;
-    box-shadow: none;
+
+  a {
+    color: #333;
+    text-decoration: underline;
   }
-}
 
-form {
-  margin: 30px 0px;
-}
+  .box {
+    border-radius: 8px;
+    background-color: white;
+    padding: 40px;
+    min-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    @media screen and (max-width: 500px) {
+      min-width: auto;
+      width: 100vw;
+      box-shadow: none;
+    }
+  }
 
-form div {
-  margin: 10px 0px;
-}
+  form {
+    margin: 30px 0px;
+    div {
+      margin: 10px 0px;
+    }
 
-form input {
-  width: 100%;
-  font-size: 1rem;
-  padding: 10px;
-}
+    input {
+      width: 100%;
+      font-size: 1rem;
+      padding: 10px;
+    }
 
-form button {
-  width: 100%;
-  font-size: 1rem;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  border: none;
-}
-
-.auth a {
-  color: #333;
-  text-decoration: underline;
+    button {
+      width: 100%;
+      font-size: 1rem;
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+    }
+  }
 }

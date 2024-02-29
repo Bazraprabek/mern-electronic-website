@@ -20,6 +20,7 @@ import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 import Shop from "./pages/Shop.jsx";
 import Details from "./pages/Details.jsx";
 import Search from "./pages/Search.jsx";
+import Cart from "./pages/Cart.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +29,8 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
         <Route path="about" element={<About />} />
-        <Route path="detail" element={<Details />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="detail/:id" element={<Details />} />
         <Route path="search/:name" element={<Search />} />
         <Route element={<PrivateRoutes />}>
           <Route path="profile" element={<Profile />} />
