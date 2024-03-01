@@ -21,6 +21,8 @@ import Shop from "./pages/Shop.jsx";
 import Details from "./pages/Details.jsx";
 import Search from "./pages/Search.jsx";
 import Cart from "./pages/Cart.jsx";
+import AdminRoutes from "./routes/AdminRoutes.jsx";
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +37,9 @@ const router = createBrowserRouter(
         <Route element={<PrivateRoutes />}>
           <Route path="profile" element={<Profile />} />
         </Route>
+      </Route>
+      <Route path="/dashboard" element={<AdminRoutes />}>
+        <Route index element={<Dashboard />} />
       </Route>
       <Route element={<AuthRoutes />}>
         <Route path="login" element={<Login />} />

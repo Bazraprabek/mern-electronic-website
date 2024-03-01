@@ -8,23 +8,37 @@ const Search = () => {
   const { product } = useDataContext();
 
   return (
-    <>
-      <br />
-      <p>
-        <b>Search:</b> {name}
-      </p>
-      <br />
-      {product
-        .filter((value) => value.product_name.toLowerCase().includes(name))
-        .map((product) => (
-          <Card key={product._id} {...product} />
-        ))}
-      {product.length > 0 &&
-        product.filter((value) =>
-          value.product_name.toLowerCase().includes(name)
-        ).length === 0 && <h4>No product found</h4>}
-      <br />
-    </>
+    <div className="search">
+      <div className="container">
+        <div className="search_top">
+          <p>No items found for "{name}"</p>
+          <div className="sort_by">
+            <label htmlFor="sort_by">Sort By:</label>
+            <select name="sort_by" id="sort_by">
+              <option value="best">Best Match</option>
+              <option value="top">Top sales</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="search_body">
+          {product
+            .filter((value) => value.product_name.toLowerCase().includes(name))
+            .map((product) => (
+              <Card key={product._id} {...product} />
+            ))}
+          {product.length > 0 &&
+            product.filter((value) =>
+              value.product_name.toLowerCase().includes(name)
+            ).length === 0 && (
+              <div className="not_found">
+                <i className="fa-solid fa-magnifying-glass"></i>
+                <span>No Item Found</span>
+              </div>
+            )}
+        </div>
+      </div>
+    </div>
   );
 };
 

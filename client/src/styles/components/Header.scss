@@ -3,12 +3,13 @@
 $bgcolor: rgb(244, 238, 231);
 
 header {
-  background-color: rgb(244, 238, 231);
+  background-color: #f85606;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   box-shadow: 1px 1px 5px rgb(223, 129, 129);
+  z-index: 11;
 
   nav {
     padding: 0px 20px;
@@ -161,7 +162,6 @@ header {
       position: absolute;
       display: flex;
       flex-direction: column;
-      z-index: 11;
       top: 50px;
       width: 100%;
       border-radius: 3px;

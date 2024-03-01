@@ -9,6 +9,7 @@ const Card = ({ _id, product_image, product_name, price }) => {
         <img
           src={import.meta.env.VITE_IMG_PATH + "/" + product_image || testImage}
           alt="test"
+          loading="lazy"
         />
         <div className="card_body">
           <h3>{product_name}</h3>

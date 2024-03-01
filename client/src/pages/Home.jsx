@@ -20,13 +20,13 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <br />
-      {product.map((product) => (
-        <Card key={product._id} {...product} />
-      ))}
-      <br />
-    </>
+    <div className="home">
+      <div className="d-flex">
+        {product.map((product) => (
+          <Card key={product._id} {...product} />
+        ))}
+      </div>
+    </div>
   );
 };
 
