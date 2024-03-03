@@ -21,7 +21,7 @@ const Search = () => {
           </div>
         </div>
 
-        <div className="search_body">
+        <div className="search_body d-flex">
           {product
             .filter((value) => value.product_name.toLowerCase().includes(name))
             .map((product) => (

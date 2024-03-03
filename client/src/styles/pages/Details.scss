@@ -1,5 +1,6 @@
 .details {
-  padding-top: 20px;
+  padding: 30px 0px;
+  background-color: #f4ecec;
 
   .product {
     background-color: white;
@@ -11,7 +12,10 @@
 
       .product_image {
         img {
+          width: 300px;
+          height: 300px;
           margin-right: 20px;
+          object-fit: contain;
         }
       }
       .product_details {
@@ -21,17 +25,25 @@
           border-bottom: 1px solid #ececec;
           margin-bottom: 10px;
         }
-        button {
+        button,
+        a {
           margin-top: 20px;
-          padding: 10px 20px;
+          font-size: 15px;
+          padding: 15px 25px;
           color: white;
           border: none;
         }
         .buy_now {
           background-color: rgb(151, 94, 167);
+          &:hover {
+            background-color: rgb(135, 76, 151);
+          }
         }
         .add_to_cart {
           background-color: rgb(53, 176, 92);
+          &:hover {
+            background-color: rgb(36, 152, 73);
+          }
         }
       }
     }
@@ -42,5 +54,11 @@
         margin-bottom: 10px;
       }
     }
+  }
+
+  .related_product {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
   }
 }

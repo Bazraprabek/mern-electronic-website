@@ -7,6 +7,9 @@ export const DataContextProvider = ({ children }) => {
   const [message, setMessage] = useState(null);
   const [user, setUser] = useState({});
   const [product, setProduct] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   setTimeout(() => {
     setMessage(null);
@@ -14,7 +17,7 @@ export const DataContextProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ setMessage, user, setUser, product, setProduct }}
+      value={{ setMessage, user, setUser, product, setProduct, setCart, cart }}
     >
       {children}
       <Toast message={message} />

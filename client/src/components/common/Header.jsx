@@ -10,7 +10,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const [showSuggest, setShowSuggest] = useState(false);
   const navigate = useNavigate();
-  const { product } = useDataContext();
+  const { product, cart } = useDataContext();
 
   const logout = () => {
     localStorage.removeItem("userdata");
@@ -122,6 +122,9 @@ const Header = () => {
             )}
             <Link to="/cart" className="nav_cart">
               <i className="fa-solid fa-cart-shopping"></i>
+              {cart.length > 0 && (
+                <span className="cart_count">{cart.length}</span>
+              )}
             </Link>
             <button className="nav_toggle" onClick={() => setShow(true)}>
               <i className="fa-solid fa-cart-shopping"></i>

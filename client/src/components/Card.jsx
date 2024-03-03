@@ -12,7 +12,7 @@ const Card = ({ _id, product_image, product_name, price }) => {
           loading="lazy"
         />
         <div className="card_body">
-          <h3>{product_name}</h3>
+          <h4>{product_name}</h4>
           <p>Rs. {price}</p>
         </div>
       </Link>

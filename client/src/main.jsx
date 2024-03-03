@@ -23,6 +23,7 @@ import Search from "./pages/Search.jsx";
 import Cart from "./pages/Cart.jsx";
 import AdminRoutes from "./routes/AdminRoutes.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
+import BuyNow from "./pages/BuyNow.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         <Route path="search/:name" element={<Search />} />
         <Route element={<PrivateRoutes />}>
           <Route path="profile" element={<Profile />} />
+          <Route path="buynow" element={<BuyNow />} />
         </Route>
       </Route>
       <Route path="/dashboard" element={<AdminRoutes />}>
