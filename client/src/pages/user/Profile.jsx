@@ -7,9 +7,15 @@ const Profile = () => {
     <div className="profile">
       <div className="container">
         <div className="box">
-          <h1>Profile</h1>
-          <p>Username: {user.username}</p>
-          <p>Email: {user.email}</p>
+          <i className="fa-solid fa-user"></i>
+          <div className="profile_details">
+            <h2>Personal Information</h2>
+            <form>
+              <input type="text" value={user.username} />
+              <input type="email" value={user.email} />
+              <button>Update</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

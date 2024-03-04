@@ -7,7 +7,7 @@
     padding: 20px;
     .product_info {
       display: flex;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       flex-wrap: wrap;
 
       .product_image {
@@ -25,9 +25,31 @@
           border-bottom: 1px solid #ececec;
           margin-bottom: 10px;
         }
-        button,
-        a {
-          margin-top: 20px;
+
+        .price {
+          margin-bottom: 15px;
+        }
+
+        .out_stock {
+          background-color: red;
+          color: white;
+          padding: 5px;
+          border-radius: 5px;
+        }
+        .quantity {
+          margin: 10px 0px 20px;
+          span {
+            margin: 10px;
+          }
+          button {
+            font-size: 20px;
+            padding: 5px 10px;
+            width: 40px;
+            border: none;
+          }
+        }
+        .buy_now,
+        .add_to_cart {
           font-size: 15px;
           padding: 15px 25px;
           color: white;
@@ -51,7 +73,10 @@
       h3 {
         padding-bottom: 10px;
         border-bottom: 1px solid #ececec;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      p {
+        line-height: 1.4;
       }
     }
   }

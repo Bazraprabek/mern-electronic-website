@@ -104,7 +104,7 @@ header {
       border-radius: 5px;
     }
 
-    .profile {
+    .profile_dropdown {
       display: none;
       position: absolute;
       top: 45px;
@@ -114,12 +114,12 @@ header {
       padding: 10px;
     }
 
-    .profile:hover {
+    .profile_dropdown:hover {
       display: flex;
       flex-direction: column;
     }
 
-    .profile_btn:hover + .profile {
+    .profile_btn:hover + .profile_dropdown {
       display: flex;
       flex-direction: column;
     }

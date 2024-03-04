@@ -1,0 +1,49 @@
+footer {
+  background-color: rgb(10, 10, 10);
+  text-align: center;
+  color: white;
+
+  .foot {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 10px;
+    text-align: start;
+    a {
+      color: white;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+
+      h4 {
+        border-bottom: 2px solid beige;
+        margin-bottom: 15px;
+      }
+
+      & > * {
+        margin-bottom: 10px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+    .company {
+      p {
+        margin: 8px 0px;
+      }
+      .social_links {
+        margin-top: 20px;
+        i {
+          font-size: 30px;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+  .copyright {
+    padding: 20px;
+    background-color: black;
+  }
+}

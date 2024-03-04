@@ -7,7 +7,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    p span {
+      color: green;
+    }
     select {
       border-radius: 10px;
       font-size: 0.9rem;
@@ -23,6 +25,7 @@
     padding: 30px 0px;
 
     .not_found {
+      width: 100%;
       padding-top: 40px;
       justify-content: center;
       display: flex;

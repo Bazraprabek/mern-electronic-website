@@ -21,7 +21,7 @@ const useCart = () => {
       setCartItems((prevCart) =>
         prevCart.map((item) =>
           item.id === newItem.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: newItem.quantity }
             : item
         )
       );

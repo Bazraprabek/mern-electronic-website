@@ -5,14 +5,22 @@ import { formatCurrency } from "../../helpers/helpers";
 
 const Cart = () => {
   const { cart, setCart, setMessage } = useDataContext();
-  let totalPrice = 0;
-  let totalQuantity = 0;
 
   const removeFromCart = (id) => {
     const filterCart = cart.filter((value) => value.id !== id);
     localStorage.setItem("cart", JSON.stringify(filterCart));
     setCart(filterCart);
     setMessage({ type: "success", message: "Item removed" });
+  };
+
+  const calculateTotalPrice = (cartItems) => {
+    return formatCurrency(
+      cartItems.reduce((total, item) => total + item.quantity * item.price, 0)
+    );
+  };
+
+  const calculateTotalQuantity = (cartItems) => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
 
   return (
@@ -49,18 +57,8 @@ const Cart = () => {
                         />
                       </td>
                       <td>{item.name}</td>
-                      <td>
-                        {(() => {
-                          totalQuantity = totalQuantity + item.quantity;
-                          return item.quantity;
-                        })()}
-                      </td>
-                      <td>
-                        {(() => {
-                          totalPrice = totalPrice + item.quantity * item.price;
-                          return formatCurrency(item.price);
-                        })()}
-                      </td>
+                      <td>{item.quantity}</td>
+                      <td>{formatCurrency(item.price)}</td>
                       <td>
                         <button onClick={() => removeFromCart(item.id)}>
                           Remove
@@ -73,12 +71,12 @@ const Cart = () => {
                   <tr>
                     <th>Total</th>
                     <th></th>
-                    <th>{totalQuantity}</th>
-                    <th>{formatCurrency(totalPrice)}</th>
+                    <th>{calculateTotalQuantity(cart)}</th>
+                    <th>{calculateTotalPrice(cart)}</th>
                     <td>
-                      <button className="buynow">
-                        <Link to="/buynow">Buy Now</Link>
-                      </button>
+                      <Link className="buynow" to="/buynow">
+                        Buy Now
+                      </Link>
                     </td>
                   </tr>
                 </tfoot>

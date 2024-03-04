@@ -14,7 +14,7 @@ const Header = () => {
 
   const logout = () => {
     localStorage.removeItem("userdata");
-    navigate("/login");
+    window.location.replace("/login");
   };
 
   const searchProduct = (e) => {
@@ -112,7 +112,7 @@ const Header = () => {
               <i className="fa-solid fa-user"></i>
             </Link>
             {token ? (
-              <div className="profile">
+              <div className="profile_dropdown">
                 <Link to="/profile">Profile</Link>
                 <Link className="logout" onClick={logout}>
                   Logout

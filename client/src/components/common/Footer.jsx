@@ -5,18 +5,28 @@ const Footer = () => {
   return (
     <footer>
       <div className="foot">
+        <div className="company">
+          <h2>Bazra Shop</h2>
+          <p>Bazra Shop is online e-commerce website.</p>
+          <div className="social_links">
+            <a href="https://www.facebook.com/" target="_blank">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com/" target="_blank">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
         <div className="links">
           <h4>NavLinks</h4>
-
           <Link to="/shop">Shop</Link>
           <Link to="/about">About Us</Link>
         </div>
-        <div className="company">
-          <h4>Bazra Shop</h4>
-          <p>Bazra Shop is online e-commerce website.</p>
-        </div>
       </div>
-      <p>&copy; Englishcha, 2024</p>
+      <p className="copyright">&copy; Englishcha, 2024</p>
     </footer>
   );
 };
