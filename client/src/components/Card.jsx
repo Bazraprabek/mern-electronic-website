@@ -1,6 +1,7 @@
 import React from "react";
 import testImage from "../assets/test.jpg";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "../helpers/helpers";
 
 const Card = ({ _id, product_image, product_name, price }) => {
   return (
@@ -13,7 +14,7 @@ const Card = ({ _id, product_image, product_name, price }) => {
         />
         <div className="card_body">
           <h4>{product_name}</h4>
-          <p>Rs. {price}</p>
+          <p>{formatCurrency(price)}</p>
         </div>
       </Link>
     </div>

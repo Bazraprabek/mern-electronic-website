@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Card from "../components/Card";
-import { useDataContext } from "../contexts/Data.context";
-import productService from "../services/productService";
+import Card from "../../components/Card";
+import { useDataContext } from "../../contexts/Data.context";
+import productService from "../../services/productService";
 
 const Home = () => {
   const { product, setProduct } = useDataContext();

@@ -1,6 +1,7 @@
 import React from "react";
-import { useDataContext } from "../contexts/Data.context";
+import { useDataContext } from "../../contexts/Data.context";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "../../helpers/helpers";
 
 const Cart = () => {
   const { cart, setCart, setMessage } = useDataContext();
@@ -57,7 +58,7 @@ const Cart = () => {
                       <td>
                         {(() => {
                           totalPrice = totalPrice + item.quantity * item.price;
-                          return "Rs. " + item.quantity * item.price;
+                          return formatCurrency(item.price);
                         })()}
                       </td>
                       <td>
@@ -73,7 +74,7 @@ const Cart = () => {
                     <th>Total</th>
                     <th></th>
                     <th>{totalQuantity}</th>
-                    <th>Rs. {totalPrice}</th>
+                    <th>{formatCurrency(totalPrice)}</th>
                     <td>
                       <button className="buynow">
                         <Link to="/buynow">Buy Now</Link>

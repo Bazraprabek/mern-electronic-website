@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Card from "../components/Card";
-import { useDataContext } from "../contexts/Data.context";
+import Card from "../../components/Card";
+import { useDataContext } from "../../contexts/Data.context";
 
 const Search = () => {
   const { name } = useParams();

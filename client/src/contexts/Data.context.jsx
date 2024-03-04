@@ -13,7 +13,7 @@ export const DataContextProvider = ({ children }) => {
 
   setTimeout(() => {
     setMessage(null);
-  }, 4000);
+  }, 3000);
 
   return (
     <DataContext.Provider

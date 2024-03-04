@@ -8,22 +8,22 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Home from "./pages/Home.jsx";
 import Layout from "./Layout.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Signup from "./pages/auth/Signup.jsx";
-import About from "./pages/About.jsx";
 import { DataContextProvider } from "./contexts/Data.context.jsx";
-import Profile from "./pages/Profile.jsx";
 import AuthRoutes from "./routes/AuthRoutes.jsx";
 import PrivateRoutes from "./routes/PrivateRoutes.jsx";
-import Shop from "./pages/Shop.jsx";
-import Details from "./pages/Details.jsx";
-import Search from "./pages/Search.jsx";
-import Cart from "./pages/Cart.jsx";
 import AdminRoutes from "./routes/AdminRoutes.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
-import BuyNow from "./pages/BuyNow.jsx";
+import Home from "./pages/user/Home.jsx";
+import Shop from "./pages/user/Shop.jsx";
+import Cart from "./pages/user/Cart.jsx";
+import Details from "./pages/user/Details.jsx";
+import Search from "./pages/user/Search.jsx";
+import Profile from "./pages/user/Profile.jsx";
+import BuyNow from "./pages/user/BuyNow.jsx";
+import About from "./pages/user/About.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

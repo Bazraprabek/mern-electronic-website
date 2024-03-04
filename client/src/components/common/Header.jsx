@@ -61,6 +61,7 @@ const Header = () => {
                   .filter((value) =>
                     value.product_name.toLowerCase().includes(search)
                   )
+                  .slice(0, 5)
                   .map((value, index) => (
                     <Link
                       key={index}
@@ -78,7 +79,7 @@ const Header = () => {
             ) : (
               searchHistory && (
                 <div className="suggest">
-                  {searchHistory.map((value, index) => (
+                  {searchHistory.slice(0, 5).map((value, index) => (
                     <Link
                       key={index}
                       to={"/search/" + value}
