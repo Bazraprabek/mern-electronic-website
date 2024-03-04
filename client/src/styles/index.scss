@@ -1,10 +1,53 @@
-@import url("./App.scss");
-@import url("./auth.scss");
-@import url("./components/Header.scss");
-@import url("./components/Footer.scss");
-@import url("./components/Card.scss");
-@import url("./pages/Details.scss");
-@import url("./pages/Home.scss");
-@import url("./pages/Search.scss");
-@import url("./pages/Cart.scss");
-@import url("./pages/Profile.scss");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+main {
+  margin-top: 65px;
+  min-height: 60vh;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+button {
+  cursor: pointer;
+}
+
+.toast {
+  position: fixed;
+  z-index: 1111;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  color: white;
+}
+
+.d-flex {
+  display: flex;
+  // justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.box {
+  background-color: white;
+  padding: 20px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+.mb-2 {
+  margin-bottom: 20px;
+}
