@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="d-flex">
+      <div className="d-flex-center">
         {product.map((product) => (
           <Card key={product._id} {...product} />
         ))}

@@ -41,7 +41,7 @@ const Details = () => {
           {filterProduct.length === 0
             ? "Something went Wrong!"
             : filterProduct.map((value, index) => (
-                <>
+                <div key={index}>
                   <div className="product_info">
                     <div className="product_image">
                       <img
@@ -71,7 +71,10 @@ const Details = () => {
                             </button>
                           </div>
                           <div className="actions">
-                            <Link to="/buynow" className="buy_now">
+                            <Link
+                              to={`/buynow/${value._id}/${quantity}`}
+                              className="buy_now"
+                            >
                               Buy Now
                             </Link>{" "}
                             <button
@@ -79,8 +82,8 @@ const Details = () => {
                               onClick={() => {
                                 addToCart({
                                   id: value._id,
-                                  image: value.product_image,
-                                  name: value.product_name,
+                                  product_image: value.product_image,
+                                  product_name: value.product_name,
                                   price: value.price,
                                   quantity,
                                 });
@@ -97,7 +100,7 @@ const Details = () => {
                     <h3>Description </h3>
                     <p>{value.description}</p>
                   </div>
-                </>
+                </div>
               ))}
         </div>
         <div className="related_product">

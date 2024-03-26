@@ -38,6 +38,7 @@ const router = createBrowserRouter(
         <Route element={<PrivateRoutes />}>
           <Route path="profile" element={<Profile />} />
           <Route path="buynow" element={<BuyNow />} />
+          <Route path="buynow/:id/:quantity" element={<BuyNow />} />
         </Route>
       </Route>
       <Route path="/dashboard" element={<AdminRoutes />}>

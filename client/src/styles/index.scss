@@ -37,9 +37,15 @@ button {
   color: white;
 }
 
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .d-flex {
   display: flex;
-  // justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -54,4 +60,7 @@ button {
 }
 .mb-2 {
   margin-bottom: 20px;
+}
+.p-1 {
+  padding: 10px;
 }

@@ -10,13 +10,13 @@ const Footer = () => {
           <p>Bazra Shop is online e-commerce website.</p>
           <div className="social_links">
             <a href="https://www.facebook.com/" target="_blank">
-              <i class="fa-brands fa-facebook"></i>
+              <i className="fa-brands fa-facebook"></i>
             </a>
             <a href="https://www.instagram.com/" target="_blank">
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-instagram"></i>
             </a>
             <a href="https://www.twitter.com/" target="_blank">
-              <i class="fa-brands fa-x-twitter"></i>
+              <i className="fa-brands fa-x-twitter"></i>
             </a>
           </div>
         </div>

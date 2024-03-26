@@ -57,7 +57,7 @@ header {
       flex-direction: row;
       list-style: none;
       text-align: center;
-      row-gap: 1rem;
+      row-gap: 2rem;
       @media screen and (max-width: 700px) {
         flex-direction: column;
       }
@@ -226,9 +226,6 @@ header {
 }
 
 @media screen and (min-width: 700px) {
-  .nav_menu {
-    margin-left: auto;
-  }
   .nav_close,
   .nav_toggle {
     display: none;
