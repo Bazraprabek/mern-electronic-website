@@ -51,12 +51,16 @@ const Cart = () => {
                     <tr key={item.id}>
                       <td>
                         <img
-                          src={import.meta.env.VITE_IMG_PATH + "/" + item.image}
+                          src={
+                            import.meta.env.VITE_IMG_PATH +
+                            "/" +
+                            item.product_image
+                          }
                           alt={item.product_name}
                           loading="lazy"
                         />
                       </td>
-                      <td>{item.name}</td>
+                      <td>{item.product_name}</td>
                       <td>{item.quantity}</td>
                       <td>{formatCurrency(item.price)}</td>
                       <td>

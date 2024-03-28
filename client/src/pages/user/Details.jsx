@@ -12,7 +12,6 @@ const Details = () => {
   const [quantity, setQuantity] = useState(1);
 
   const filterProduct = product.filter((value) => value._id === id);
-  console.log(filterProduct);
 
   const plusQuantity = () => {
     if (filterProduct[0].stack > quantity) {

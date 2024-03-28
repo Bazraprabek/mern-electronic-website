@@ -24,6 +24,7 @@ import Search from "./pages/user/Search.jsx";
 import Profile from "./pages/user/Profile.jsx";
 import BuyNow from "./pages/user/BuyNow.jsx";
 import About from "./pages/user/About.jsx";
+import OrderSuccessful from "./pages/user/OrderSuccessful.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         <Route path="search/:name" element={<Search />} />
         <Route element={<PrivateRoutes />}>
           <Route path="profile" element={<Profile />} />
+          <Route path="success" element={<OrderSuccessful />} />
           <Route path="buynow" element={<BuyNow />} />
           <Route path="buynow/:id/:quantity" element={<BuyNow />} />
         </Route>

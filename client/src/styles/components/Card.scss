@@ -1,14 +1,14 @@
 .card {
   background-color: white;
   cursor: pointer;
-  box-shadow: 1px 1px 5px rgb(241, 172, 172);
+  box-shadow: 1px 1px 5px rgb(241, 214, 214);
   width: 12rem;
   margin: 10px;
   height: 250px;
   z-index: 1;
 
   &:hover {
-    box-shadow: 1px 1px 5px rgb(166, 98, 98);
+    box-shadow: 1px 1px 5px rgb(211, 147, 147);
   }
 
   img {
