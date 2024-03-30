@@ -10,7 +10,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const [showSuggest, setShowSuggest] = useState(false);
   const navigate = useNavigate();
-  const { product, cart } = useDataContext();
+  const { product, cart, user } = useDataContext();
 
   const logout = () => {
     localStorage.removeItem("userdata");
@@ -108,25 +108,35 @@ const Header = () => {
             </button>
           </div>
           <div className="nav_actions">
-            <Link className="profile_btn" to={token ? "/profile" : "/login"}>
-              <i className="fa-solid fa-user"></i>
-            </Link>
-            {token ? (
-              <div className="profile_dropdown">
-                <Link to="/profile">Profile</Link>
-                <Link className="logout" onClick={logout}>
-                  Logout
-                </Link>
-              </div>
-            ) : (
-              ""
-            )}
             <Link to="/cart" className="nav_cart">
               <i className="fa-solid fa-cart-shopping"></i>
               {cart.length > 0 && (
                 <span className="cart_count">{cart.length}</span>
               )}
             </Link>
+            {token ? (
+              <>
+                <Link className="profile_btn" to="/profile">
+                  <i className="fa-solid fa-user"></i>
+                </Link>
+                <div className="profile_dropdown">
+                  <Link to="/profile">{user.username}</Link>
+                  <Link className="logout" onClick={logout}>
+                    Logout
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link className="btn" to="/login">
+                  Login
+                </Link>
+                <Link className="btn signup_btn" to="/signup">
+                  Signup
+                </Link>
+              </>
+            )}
+
             <button className="nav_toggle" onClick={() => setShow(true)}>
               <i className="fa-solid fa-cart-shopping"></i>
             </button>

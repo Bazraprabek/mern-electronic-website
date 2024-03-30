@@ -19,7 +19,7 @@ const userLogin = async (req, res) => {
     if (!isValid) {
       return res.status(401).send("Invalid Credentials");
     }
-    const accessToken = generateAccessToken(user.username);
+    const accessToken = generateAccessToken(user.username, user._id);
     res.send({
       accessToken,
     });
@@ -62,9 +62,10 @@ const userSignup = async (req, res) => {
 
 const fetchUser = async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.user.user }).select([
+    const user = await User.findOne({ _id: req.user.id }).select([
       "-password",
       "-created_at",
+      "-_id",
     ]);
     res.send(user);
   } catch (err) {
