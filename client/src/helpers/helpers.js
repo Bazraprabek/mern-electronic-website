@@ -84,3 +84,8 @@ export const nepalDistricts = [
   "Terhathum",
   "Udayapur",
 ];
+
+export const exploreOptions = {
+  brands: ["Iphone", "Samsung", "Redmi"],
+  electronic: ["Mobile", "Ipad", "Laptop", "Earphones"],
+};

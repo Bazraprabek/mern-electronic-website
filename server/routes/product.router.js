@@ -4,6 +4,7 @@ const multer = require("multer");
 const {
   fetchProducts,
   createProducts,
+  deleteProduct,
 } = require("../controllers/product.controller");
 
 // Multer File Upload
@@ -22,6 +23,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post("/create", upload.single("product_image"), createProducts);
+router.delete("/delete/:id", deleteProduct);
 router.get("/", fetchProducts);
 
 module.exports = router;

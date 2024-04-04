@@ -15,7 +15,6 @@ import { DataContextProvider } from "./contexts/Data.context.jsx";
 import AuthRoutes from "./routes/AuthRoutes.jsx";
 import PrivateRoutes from "./routes/PrivateRoutes.jsx";
 import AdminRoutes from "./routes/AdminRoutes.jsx";
-import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import Home from "./pages/user/Home.jsx";
 import Shop from "./pages/user/Shop.jsx";
 import Cart from "./pages/user/Cart.jsx";
@@ -24,7 +23,10 @@ import Search from "./pages/user/Search.jsx";
 import Profile from "./pages/user/Profile.jsx";
 import BuyNow from "./pages/user/BuyNow.jsx";
 import About from "./pages/user/About.jsx";
-import OrderSuccessful from "./pages/user/OrderSuccessful.jsx";
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
+import DashboardOrder from "./pages/dashboard/DashboardOrder.jsx";
+import DashboardProduct from "./pages/dashboard/DashboardProduct.jsx";
+import DashboardAccount from "./pages/dashboard/DashboardAccount.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,13 +40,15 @@ const router = createBrowserRouter(
         <Route path="search/:name" element={<Search />} />
         <Route element={<PrivateRoutes />}>
           <Route path="profile" element={<Profile />} />
-          <Route path="success" element={<OrderSuccessful />} />
           <Route path="buynow" element={<BuyNow />} />
           <Route path="buynow/:id/:quantity" element={<BuyNow />} />
         </Route>
       </Route>
       <Route path="/dashboard" element={<AdminRoutes />}>
         <Route index element={<Dashboard />} />
+        <Route path="account" element={<DashboardAccount />} />
+        <Route path="product" element={<DashboardProduct />} />
+        <Route path="order" element={<DashboardOrder />} />
       </Route>
       <Route element={<AuthRoutes />}>
         <Route path="login" element={<Login />} />

@@ -59,18 +59,23 @@ const BuyNow = () => {
         customerDetails.district &&
         customerDetails.address
       ) {
-        const data = {
-          customer_id: user._id,
-          customer_name: customerDetails.customer_name,
-          contact_number: customerDetails.contact_number,
-          district: customerDetails.district,
-          address: customerDetails.address,
-          products: [{ product_id: filterProduct[0]._id, quantity }],
-        };
-        const res = await axiosInstance.post("/shop/pay/cash", data);
-        if (res.status === 200) {
-          setMessage({ type: "success", message: "Order Successful" });
-          navigate("/success");
+        var result = confirm("Are you sure want to buy?");
+        if (result) {
+          const data = {
+            customer_id: user._id,
+            customer_name: customerDetails.customer_name,
+            contact_number: customerDetails.contact_number,
+            district: customerDetails.district,
+            address: customerDetails.address,
+            products: [{ product: filterProduct[0]._id, quantity }],
+          };
+          const res = await axiosInstance.post("/shop/pay/cash", data);
+          if (res.status === 200) {
+            setMessage({ type: "success", message: "Order Successful" });
+            navigate("/success");
+          }
+        } else {
+          console.log("User clicked Cancel");
         }
       } else {
         setMessage({
@@ -92,24 +97,29 @@ const BuyNow = () => {
         customerDetails.district &&
         customerDetails.address
       ) {
-        const products = cart.map((value) => ({
-          product_id: value.id,
-          quantity: value.quantity,
-        }));
-        const data = {
-          customer_id: user._id,
-          customer_name: customerDetails.customer_name,
-          contact_number: customerDetails.contact_number,
-          district: customerDetails.district,
-          address: customerDetails.address,
-          products,
-        };
-        const res = await axiosInstance.post("/shop/pay/cash", data);
-        if (res.status === 200) {
-          setMessage({ type: "success", message: "Order Successful" });
-          setCart([]);
-          localStorage.setItem("cart", JSON.stringify([]));
-          navigate("/success");
+        var result = confirm("Are you sure want to buy?");
+        if (result) {
+          const products = cart.map((value) => ({
+            product: value.id,
+            quantity: value.quantity,
+          }));
+          const data = {
+            customer_id: user._id,
+            customer_name: customerDetails.customer_name,
+            contact_number: customerDetails.contact_number,
+            district: customerDetails.district,
+            address: customerDetails.address,
+            products,
+          };
+          const res = await axiosInstance.post("/shop/pay/cash", data);
+          if (res.status === 200) {
+            setMessage({ type: "success", message: "Order Successful" });
+            setCart([]);
+            localStorage.setItem("cart", JSON.stringify([]));
+            navigate("/success");
+          }
+        } else {
+          console.log("User clicked Cancel");
         }
       } else {
         setMessage({
@@ -179,6 +189,7 @@ const BuyNow = () => {
                         <p>{formatCurrency(value.price)}</p>
                         <p>{quantity}</p>
                         <hr />
+                        <br />
                         <p>
                           Total Price: {formatCurrency(value.price * quantity)}
                         </p>

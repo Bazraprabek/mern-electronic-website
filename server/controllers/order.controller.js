@@ -20,15 +20,9 @@ const khalti = async (req, res) => {
 
 const createOrder = async (req, res) => {
   try {
-    const {
-      customer_id,
-      products,
-      customer_name,
-      contact_number,
-      district,
-      address,
-    } = req.body;
-    console.log("Data:", req.body);
+    const { products, customer_name, contact_number, district, address } =
+      req.body;
+    const customer_id = req.user.id;
     if (customer_id && address && products) {
       const order = await Order.create({
         customer_id,
@@ -55,8 +49,33 @@ const createOrder = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(400).send({ msg: "Fail to create" });
+    res.status(400).send("Internal Server Error");
   }
 };
 
-module.exports = { khalti, createOrder };
+const fetchOrder = async (req, res) => {
+  try {
+    const orders = await Order.find({}).populate("products.product");
+    res.status(200).json(orders);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch orders" });
+  }
+};
+
+const deleteOrder = async (req, res) => {
+  try {
+    const _id = req.params.id;
+    const orders = await Order.deleteOne({ _id });
+    if (orders) {
+      res.status(200).json(orders);
+    } else {
+      res.status(400).json({ error: "Failed to delete order" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("Internal Server Error");
+  }
+};
+
+module.exports = { khalti, createOrder, fetchOrder, deleteOrder };

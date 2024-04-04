@@ -22,8 +22,16 @@ const Login = () => {
       const res = await authService.login(data);
       if (res.status === 200) {
         setLoading(false);
-        setMessage({ type: "success", message: "Welcome to Bazra Shop" });
-        navigate("/");
+        if (res.data.role === "admin") {
+          setMessage({
+            type: "success",
+            message: "Welcome to Admin Dashbaord",
+          });
+          navigate("/dashboard");
+        } else {
+          setMessage({ type: "success", message: "Welcome to Bazra Shop" });
+          navigate("/");
+        }
       }
     } catch (err) {
       setLoading(false);

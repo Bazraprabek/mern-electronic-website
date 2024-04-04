@@ -8,7 +8,7 @@ const Card = ({ _id, product_image, product_name, price }) => {
     <div className="card">
       <Link to={"/detail/" + _id}>
         <img
-          src={import.meta.env.VITE_IMG_PATH + "/" + product_image || testImage}
+          src={import.meta.env.VITE_IMG_PATH + product_image || testImage}
           alt="test"
           loading="lazy"
         />

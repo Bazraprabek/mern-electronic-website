@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useDataContext } from "../../contexts/Data.context";
+import { exploreOptions } from "../../helpers/helpers";
 
 const Header = () => {
   const token = localStorage.getItem("userdata");
@@ -39,10 +40,12 @@ const Header = () => {
   return (
     <header>
       <nav>
-        <Link className="nav_logo" to="/">
-          <img src={logo} width="35px" alt="logo" />
-          <span>azra</span>
-        </Link>
+        <div className="d-flex">
+          <Link className="nav_logo" to="/">
+            <img src={logo} width="35px" alt="logo" />
+            <span>azra</span>
+          </Link>
+        </div>
         <form className="search_box" onSubmit={searchProduct}>
           <input
             type="text"
@@ -59,7 +62,9 @@ const Header = () => {
               <div className="suggest">
                 {product
                   .filter((value) =>
-                    value.product_name.toLowerCase().includes(search)
+                    value.product_name
+                      .toLowerCase()
+                      .includes(search.toLowerCase())
                   )
                   .slice(0, 5)
                   .map((value, index) => (
@@ -73,7 +78,9 @@ const Header = () => {
                   ))}
                 {product.length > 0 &&
                   product.filter((value) =>
-                    value.product_name.toLowerCase().includes(search)
+                    value.product_name
+                      .toLowerCase()
+                      .includes(search.toLowerCase())
                   ).length === 0 && <p>No product found</p>}
               </div>
             ) : (
@@ -108,7 +115,7 @@ const Header = () => {
             </button>
           </div>
           <div className="nav_actions">
-            <Link to="/cart" className="nav_cart">
+            <Link to="/cart" className="nav_cart" title="Cart">
               <i className="fa-solid fa-cart-shopping"></i>
               {cart.length > 0 && (
                 <span className="cart_count">{cart.length}</span>

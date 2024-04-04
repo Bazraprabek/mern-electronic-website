@@ -23,8 +23,8 @@ const Profile = () => {
     } catch (error) {
       console.error("Error updating user:", error);
       setMessage({
-        type: "success",
-        message: "Fail to update",
+        type: "error",
+        message: error.response.data.message || "Fail to update",
       });
     }
   };

@@ -19,9 +19,10 @@ const userLogin = async (req, res) => {
     if (!isValid) {
       return res.status(401).send("Invalid Credentials");
     }
-    const accessToken = generateAccessToken(user.username, user._id);
+    const accessToken = generateAccessToken(user._id);
     res.send({
       accessToken,
+      role: user.role,
     });
   } catch (err) {
     console.log(err);

@@ -26,6 +26,6 @@ userSchema.pre("save", async function () {
   this.password = await bycrptjs.hash(this.password, 10);
 });
 
-const User = mongoose.model.users || mongoose.model("user", userSchema);
+const User = mongoose.model("user", userSchema);
 
 module.exports = User;
