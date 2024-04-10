@@ -1,4 +1,5 @@
 const User = require("../models/User.model");
+const { sendMail } = require("../services/mailer");
 
 const updateUser = async (req, res) => {
   try {
@@ -46,6 +47,36 @@ const fetchAccount = async (req, res) => {
   }
 };
 
+const createAccount = async (req, res) => {
+  try {
+    const { username, email, password, role } = req.body;
+    if (!username && !email && !password) {
+      return res.status(400).send({
+        message: "Please fill all fields",
+      });
+    }
+    const isUsernameExist = await User.findOne({ username });
+    const isEmailExist = await User.findOne({ email });
+    if (isUsernameExist) {
+      return res.status(403).send("Username already exists");
+    }
+    if (isEmailExist) {
+      return res.status(403).send("Email is already registered");
+    }
+
+    const user = await User.create({ username, email, password, role });
+    if (user) {
+      sendMail(user.username, user.email);
+      res.send({
+        message: "Signup Successful",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 const deleteAccount = async (req, res) => {
   try {
     const _id = req.params.id;
@@ -61,4 +92,4 @@ const deleteAccount = async (req, res) => {
   }
 };
 
-module.exports = { updateUser, fetchAccount, deleteAccount };
+module.exports = { updateUser, fetchAccount, deleteAccount, createAccount };

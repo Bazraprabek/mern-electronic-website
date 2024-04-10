@@ -32,16 +32,19 @@ const createOrder = async (req, res) => {
         customer_name,
         contact_number,
         district,
+        status: "processing",
       });
-      const updatePromises = products.map(async (value) => {
-        const product = await Product.findOne({ _id: value.product_id });
-        if (product) {
-          product.stack -= value.quantity;
-          await product.save();
-        }
-      });
+      if (order) {
+        const updatePromises = products.map(async (value) => {
+          const product = await Product.findOne({ _id: value.product });
+          if (product) {
+            product.stock -= value.quantity;
+            await product.save();
+          }
+        });
 
-      await Promise.all(updatePromises);
+        await Promise.all(updatePromises);
+      }
 
       res.status(200).json(order);
     } else {
@@ -56,18 +59,34 @@ const createOrder = async (req, res) => {
 const fetchOrder = async (req, res) => {
   try {
     const orders = await Order.find({}).populate("products.product");
-    res.status(200).json(orders);
+    const sortedOrders = orders.sort((a, b) => b.order_date - a.order_date);
+    res.status(200).json(sortedOrders);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Failed to fetch orders" });
   }
 };
 
-const deleteOrder = async (req, res) => {
+const statusOrder = async (req, res) => {
   try {
-    const _id = req.params.id;
-    const orders = await Order.deleteOne({ _id });
+    const { id, status } = req.body;
+    const orders = await Order.findOneAndUpdate(
+      { _id: id },
+      { $set: { status } },
+      { new: true }
+    ).select(["-password", "-created_at", "-_id"]);
     if (orders) {
+      if (orders.status === "canceled") {
+        const updatePromises = orders.products.map(async (value) => {
+          const product = await Product.findOne({ _id: value.product });
+          if (product) {
+            product.stock += value.quantity;
+            await product.save();
+          }
+        });
+
+        await Promise.all(updatePromises);
+      }
       res.status(200).json(orders);
     } else {
       res.status(400).json({ error: "Failed to delete order" });
@@ -78,4 +97,53 @@ const deleteOrder = async (req, res) => {
   }
 };
 
-module.exports = { khalti, createOrder, fetchOrder, deleteOrder };
+const fetchUserOrder = async (req, res) => {
+  try {
+    const orders = await Order.find({ customer_id: req.user.id }).populate(
+      "products.product"
+    );
+    const sortedOrders = orders.sort((a, b) => b.order_date - a.order_date);
+    res.status(200).json(sortedOrders);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch orders" });
+  }
+};
+
+const cancelOrder = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const orders = await Order.findOneAndUpdate(
+      { _id: id },
+      { $set: { status: "canceled" } },
+      { new: true }
+    ).select(["-password", "-created_at", "-_id"]);
+    if (orders) {
+      const updatePromises = orders.products.map(async (value) => {
+        const product = await Product.findOne({ _id: value.product });
+        if (product) {
+          product.stock += value.quantity;
+          await product.save();
+        }
+      });
+
+      await Promise.all(updatePromises);
+
+      res.status(200).json("Order Canceled");
+    } else {
+      res.status(400).json({ error: "Failed to delete order" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("Internal Server Error");
+  }
+};
+
+module.exports = {
+  khalti,
+  createOrder,
+  fetchOrder,
+  statusOrder,
+  cancelOrder,
+  fetchUserOrder,
+};

@@ -38,7 +38,7 @@ const Modal = ({ show, setShow, addProduct }) => {
             </button>
           </div>
           <div className="modal_content">
-            <div className="mb-2">
+            <div className="mb-2 mt-2">
               <label htmlFor="product_name">Product Name</label>
               <input
                 type="text"
@@ -47,13 +47,12 @@ const Modal = ({ show, setShow, addProduct }) => {
               />
             </div>
             <div className="mb-2">
-              <label class="custom-file-input">
-                <input
-                  type="file"
-                  {...register("product_image", { required: true })}
-                  accept=".jpg, .jpeg, .png"
-                />
-              </label>
+              <label htmlFor="product_image">Product Image</label>
+              <input
+                type="file"
+                {...register("product_image", { required: true })}
+                accept=".jpg, .jpeg, .png"
+              />
             </div>
             <div className="mb-2">
               <label htmlFor="price">Price</label>

@@ -6,6 +6,7 @@ const {
   createProducts,
   deleteProduct,
 } = require("../controllers/product.controller");
+const { admin } = require("../middleware/admin");
 
 // Multer File Upload
 
@@ -22,8 +23,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/create", upload.single("product_image"), createProducts);
-router.delete("/delete/:id", deleteProduct);
+router.post("/create", upload.single("product_image"), admin, createProducts);
+router.delete("/delete/:id", admin, deleteProduct);
 router.get("/", fetchProducts);
 
 module.exports = router;

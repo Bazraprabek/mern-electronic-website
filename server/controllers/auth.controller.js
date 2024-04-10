@@ -48,7 +48,6 @@ const userSignup = async (req, res) => {
     }
 
     const user = await User.create({ username, email, password, role: "user" });
-    console.log("User: ", user);
     if (user) {
       sendMail(user.username, user.email);
       res.send({
@@ -75,4 +74,18 @@ const fetchUser = async (req, res) => {
   }
 };
 
-module.exports = { userLogin, userSignup, fetchUser };
+const fetchAdmin = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.user.id }).select([
+      "-password",
+      "-created_at",
+      "-_id",
+    ]);
+    res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
+module.exports = { userLogin, userSignup, fetchUser, fetchAdmin };

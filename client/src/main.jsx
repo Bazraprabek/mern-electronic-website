@@ -27,6 +27,7 @@ import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import DashboardOrder from "./pages/dashboard/DashboardOrder.jsx";
 import DashboardProduct from "./pages/dashboard/DashboardProduct.jsx";
 import DashboardAccount from "./pages/dashboard/DashboardAccount.jsx";
+import OrderHistory from "./pages/user/OrderHistory.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
         <Route path="search/:name" element={<Search />} />
         <Route element={<PrivateRoutes />}>
           <Route path="profile" element={<Profile />} />
+          <Route path="order" element={<OrderHistory />} />
           <Route path="buynow" element={<BuyNow />} />
           <Route path="buynow/:id/:quantity" element={<BuyNow />} />
         </Route>

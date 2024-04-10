@@ -35,7 +35,7 @@ const BuyNow = () => {
         customerDetails.district &&
         customerDetails.address
       ) {
-        const res = await axiosInstance.get("/shop/pay");
+        const res = await axiosInstance.get("/order/pay");
         if (res) {
           window.location.href = res.data;
         }
@@ -69,7 +69,7 @@ const BuyNow = () => {
             address: customerDetails.address,
             products: [{ product: filterProduct[0]._id, quantity }],
           };
-          const res = await axiosInstance.post("/shop/pay/cash", data);
+          const res = await axiosInstance.post("/order/pay/cash", data);
           if (res.status === 200) {
             setMessage({ type: "success", message: "Order Successful" });
             navigate("/success");
@@ -111,7 +111,7 @@ const BuyNow = () => {
             address: customerDetails.address,
             products,
           };
-          const res = await axiosInstance.post("/shop/pay/cash", data);
+          const res = await axiosInstance.post("/order/pay/cash", data);
           if (res.status === 200) {
             setMessage({ type: "success", message: "Order Successful" });
             setCart([]);

@@ -18,6 +18,7 @@ const orderSchema = new mongoose.Schema({
       quantity: { type: Number, required: true },
     },
   ],
+  status: { type: String, required: true },
   order_date: { type: Date, default: Date.now },
 });
 

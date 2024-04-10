@@ -14,7 +14,7 @@ const Details = () => {
   const filterProduct = product.filter((value) => value._id === id);
 
   const plusQuantity = () => {
-    if (filterProduct[0].stack > quantity) {
+    if (filterProduct[0].stock > quantity) {
       setQuantity(quantity + 1);
     } else {
       setMessage({ type: "error", message: "Item is out of stock" });
@@ -56,7 +56,7 @@ const Details = () => {
                     <div className="product_details">
                       <h2 className="title">{value.product_name}</h2>
                       <h4 className="price">{formatCurrency(value.price)}</h4>
-                      {value.stack < 1 ? (
+                      {value.stock < 1 ? (
                         <span className="out_stock">Item is out of stock</span>
                       ) : (
                         <>

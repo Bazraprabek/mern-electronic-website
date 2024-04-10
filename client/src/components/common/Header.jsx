@@ -124,12 +124,17 @@ const Header = () => {
             {token ? (
               <>
                 <Link className="profile_btn" to="/profile">
-                  <i className="fa-solid fa-user"></i>
+                  <span>{user?.username?.charAt(0)}</span>
                 </Link>
                 <div className="profile_dropdown">
-                  <Link to="/profile">{user.username}</Link>
+                  <Link to="/profile">
+                    <i className="fa-solid fa-user"></i>PROFILE
+                  </Link>
+                  <Link to="/order">
+                    <i class="fa-solid fa-bag-shopping"></i>SHOPPING
+                  </Link>
                   <Link className="logout" onClick={logout}>
-                    Logout
+                    <i class="fa-solid fa-right-from-bracket"></i>LOGOUT
                   </Link>
                 </div>
               </>

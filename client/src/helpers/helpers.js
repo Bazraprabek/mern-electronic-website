@@ -89,3 +89,16 @@ export const exploreOptions = {
   brands: ["Iphone", "Samsung", "Redmi"],
   electronic: ["Mobile", "Ipad", "Laptop", "Earphones"],
 };
+
+export const timeConvert = (time) => {
+  const date = new Date(time);
+  const options = {
+    day: "numeric",
+    month: "short",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  const formattedDate = date.toLocaleString("en-US", options);
+  return formattedDate;
+};

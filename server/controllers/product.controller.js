@@ -13,7 +13,7 @@ const fetchProducts = async (req, res) => {
 
 const createProducts = async (req, res) => {
   try {
-    const { product_name, price, description, stack } = req.body;
+    const { product_name, price, description, stock } = req.body;
     const product_image = req.file.filename;
     // const product_image = req.file.buffer;
     if (product_name && product_image && price) {
@@ -22,7 +22,7 @@ const createProducts = async (req, res) => {
         product_image,
         price,
         description,
-        stack,
+        stock,
       });
       res.status(200).json(products);
     } else {

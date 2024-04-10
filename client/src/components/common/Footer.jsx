@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="foot">
         <div className="company">
           <h2>Bazra Shop</h2>
-          <p>Bazra Shop is online e-commerce website.</p>
+          <p>Bazra Shop is online electronic website.</p>
           <div className="social_links">
             <a href="https://www.facebook.com/" target="_blank">
               <i className="fa-brands fa-facebook"></i>
