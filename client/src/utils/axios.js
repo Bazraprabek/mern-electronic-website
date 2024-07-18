@@ -1,11 +1,12 @@
 import axios from "axios";
+import { baseURL } from "./config";
 
 const token = localStorage.getItem("userdata")
   ? JSON.parse(localStorage.getItem("userdata"))
   : null;
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL,
   headers: {
     Authorization: `Bearer ${token?.accessToken}`,
   },

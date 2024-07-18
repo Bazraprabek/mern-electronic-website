@@ -2,6 +2,7 @@ import React from "react";
 import { useDataContext } from "../../contexts/Data.context";
 import { Link } from "react-router-dom";
 import { formatCurrency } from "../../helpers/helpers";
+import { imgPath } from "../../utils/config";
 
 const Cart = () => {
   const { cart, setCart, setMessage } = useDataContext();
@@ -51,11 +52,7 @@ const Cart = () => {
                     <tr key={item.id}>
                       <td>
                         <img
-                          src={
-                            import.meta.env.VITE_IMG_PATH +
-                            "/" +
-                            item.product_image
-                          }
+                          src={imgPath + "/" + item.product_image}
                           alt={item.product_name}
                           loading="lazy"
                         />

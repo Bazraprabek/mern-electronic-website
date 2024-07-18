@@ -131,10 +131,10 @@ const Header = () => {
                     <i className="fa-solid fa-user"></i>PROFILE
                   </Link>
                   <Link to="/order">
-                    <i class="fa-solid fa-bag-shopping"></i>SHOPPING
+                    <i className="fa-solid fa-bag-shopping"></i>SHOPPING
                   </Link>
                   <Link className="logout" onClick={logout}>
-                    <i class="fa-solid fa-right-from-bracket"></i>LOGOUT
+                    <i className="fa-solid fa-right-from-bracket"></i>LOGOUT
                   </Link>
                 </div>
               </>

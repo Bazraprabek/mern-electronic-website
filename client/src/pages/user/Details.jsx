@@ -4,6 +4,7 @@ import { useDataContext } from "../../contexts/Data.context";
 import Card from "../../components/Card";
 import useCart from "../../hooks/useCart";
 import { formatCurrency } from "../../helpers/helpers";
+import { imgPath } from "../../utils/config";
 
 const Details = () => {
   const { id } = useParams();
@@ -44,11 +45,7 @@ const Details = () => {
                   <div className="product_info">
                     <div className="product_image">
                       <img
-                        src={
-                          import.meta.env.VITE_IMG_PATH +
-                          "/" +
-                          value.product_image
-                        }
+                        src={imgPath + "/" + value.product_image}
                         alt={value.product_name}
                         loading="lazy"
                       />

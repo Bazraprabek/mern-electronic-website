@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axios";
 import { useDataContext } from "../../contexts/Data.context";
 import Modal from "./components/Modal";
+import { imgPath } from "../../utils/config";
 
 const DashboardProduct = () => {
   const [products, setProduct] = useState([]);
@@ -92,7 +93,7 @@ const DashboardProduct = () => {
               <tr key={index}>
                 <td>
                   <img
-                    src={import.meta.env.VITE_IMG_PATH + value.product_image}
+                    src={imgPath + value.product_image}
                     alt={value.name}
                     width="50px"
                   />
